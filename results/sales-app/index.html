@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>모먼트룸 · 매출 비교</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon">m.</span><span>모먼트룸<small>운영 대시보드</small></span></a><nav aria-label="주 메뉴"><button id="sales-nav" class="nav-button active" aria-current="page">매출</button><button id="operations-nav" class="nav-button">운영</button></nav><span class="sample-badge">교육용 가상 데이터</span></header>
+  <main id="sales-view">
+    <section class="page-heading"><div><p class="eyebrow">SALES OVERVIEW / 01</p><h1>매출 비교</h1><p class="muted">서로 다른 채널의 실적을 한곳에서 살펴보세요.</p></div><div class="actions"><button class="button secondary" id="upload-trigger" type="button">실적 파일 추가</button><input type="file" id="upload" accept=".xlsx" multiple hidden><button id="export" class="button primary" disabled>엑셀 보고서 내보내기 <span aria-hidden="true">↗</span></button></div></section>
+    <div id="message" role="status" aria-live="polite" class="message">교육용 기본 데이터를 불러오는 중입니다.</div>
+    <section class="filter-panel" aria-label="공통 필터"><div class="filter-caption"><strong>조회 조건</strong><span>요약 · 차트 · 표 · 보고서에 함께 적용</span></div><div class="filters"><label>점포<select id="store"><option value="">전체 점포</option></select></label><label>채널<select id="channel"><option value="">전체 채널</option></select></label><label>기준주<select id="week"><option value="">전체 기준주</option></select></label><button id="reset" class="reset-button">초기화 ↺</button></div></section>
+    <section class="summary" aria-label="선택 데이터 요약"><article class="summary-card"><p>총 매출</p><strong id="sales-total">—</strong><span>만원</span><small>선택 조건의 매출 합계</small></article><article class="summary-card"><p>매출 목표</p><strong id="target-total">—</strong><span>만원</span><small>선택 조건의 목표 합계</small></article><article class="summary-card accent"><p>합계 달성률</p><strong id="attainment-total">—</strong><small>합계 매출 ÷ 합계 목표</small></article></section>
+    <section class="panel chart-panel"><div class="section-heading"><div><p class="eyebrow">STORE COMPARISON</p><h2>점포별 매출과 목표</h2></div><div class="legend"><span><i class="sales-key"></i>매출</span><span><i class="target-key"></i>목표</span><small>단위: 만원</small></div></div><div id="chart" class="chart" aria-label="점포별 매출과 목표 비교"></div></section>
+    <section class="panel records-panel"><div class="section-heading"><div><p class="eyebrow">RECORDS & NOTES</p><h2>실적 상세 <span id="row-count" class="count">0건</span></h2></div><span id="loaded-count" class="muted">전체 0건</span></div><p class="table-help">금액 단위: 만원 · 목표가 0인 달성률은 — · 메모는 이 브라우저에만 저장되며 공유되지 않습니다.</p><div class="table-scroll"><table><thead><tr><th>record_id</th><th>채널</th><th>기준주</th><th>점포</th><th>브랜드</th><th>장르</th><th>매출 (만원)</th><th>목표 (만원)</th><th>목표 차이 (만원)</th><th>달성률</th><th>비용 (만원)</th><th>비용 차감액 (만원)</th><th>상태</th><th>메모 · 로컬 저장</th><th>출처</th><th>기준일</th><th>원본 파일 · 시트 · 행</th></tr></thead><tbody id="records"></tbody></table></div><p id="memo-status" role="status" class="memo-status">메모는 입력 즉시 이 브라우저에 자동 저장됩니다.</p></section>
+    <details class="source-details"><summary>데이터 출처 및 계산 기준</summary><div id="sources"></div><p>한 행은 한 주·점포·브랜드·채널 기록입니다. record_id로 중복을 제외합니다. 목표 차이 = 매출 − 목표, 비용 차감액 = 매출 − 비용. 보고서는 04_보고양식.xlsx의 16개 열 순서를 따릅니다. 기본 자료와 추가 실적은 이 페이지에서만 처리됩니다.</p></details>
+    <footer>모먼트룸 <span>교육용 가상 데이터 · 매출 비교 1단계</span></footer>
+  </main>
+  <main id="operations-view" hidden><section class="operations-placeholder"><p class="eyebrow">OPERATIONS / 02</p><h1>운영</h1><div class="operation-tabs"><span>행사 준비</span><span>날씨</span></div><p>행사 준비와 날씨는 2단계에서 제공됩니다.</p><button id="back-sales" class="button primary">매출 화면으로</button></section></main>
+  <script src="vendor/jszip.min.js"></script><script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>

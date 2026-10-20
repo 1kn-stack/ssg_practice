@@ -1,0 +1,26 @@
+# Secrets and local runtime state
+.env
+.env.*
+!.env.example
+**/node_modules/
+node_modules/
+
+# Original exercise source materials
+/A_매출비교/
+/B_팝업오픈/
+/C_행사준비/
+/D_화면과연결/
+/E_짧은연습/
+
+# Generated data, reports and verification artifacts
+/results/*
+!/results/sales-app/
+/results/sales-app/data/
+/운영대시보드/data/
+__pycache__/
+*.py[cod]
+
+# Local credentials
+*.pem
+*.key
+credentials.json
